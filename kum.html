@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X-FACTOR DEV 🔥</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: white;
+        }
+
+        /* Login Screen Styles */
+        .login-container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            width: 90%;
+            max-width: 500px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .login-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #00ff00;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+
+        .login-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .requirement-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+            border: 2px solid #25D366;
+        }
+
+        .whatsapp-btn:hover {
+            background: transparent;
+            color: #25D366;
+            transform: scale(1.05);
+        }
+
+        .channel-btn {
+            display: inline-block;
+            background: #128C7E;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+            border: 2px solid #128C7E;
+        }
+
+        .channel-btn:hover {
+            background: transparent;
+            color: #128C7E;
+            transform: scale(1.05);
+        }
+
+        .checkmark {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: #00ff00;
+            border-radius: 50%;
+            margin-left: 10px;
+            color: white;
+            font-weight: bold;
+            line-height: 20px;
+        }
+
+        .password-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .password-input {
+            padding: 15px 20px;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.1rem;
+            text-align: center;
+            width: 100%;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+        }
+
+        .password-input:focus {
+            outline: none;
+            border-color: #00ff00;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+        }
+
+        .access-btn {
+            background: linear-gradient(135deg, #00ff00, #00cc00);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .access-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 255, 0, 0.3);
+        }
+
+        .error-message {
+            color: #ff4444;
+            font-weight: bold;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .success-message {
+            color: #00ff00;
+            font-weight: bold;
+            margin-top: 15px;
+            display: none;
+        }
+
+        /* Main Content Styles (Hidden Initially) */
+        #mainContent {
+            display: none;
+            width: 100%;
+        }
+
+        .music-player-top {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .music-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            color: white;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .music-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .tool-name {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .tool-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            width: 95%;
+            max-width: 800px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            text-align: center;
+            margin: 25px 0 15px 0;
+            color: #00ff00;
+        }
+
+        .apk-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .apk-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            transition: transform 0.2s ease;
+        }
+
+        .apk-card:hover {
+            transform: translateY(-2px);
+            background: rgba(0, 255, 0, 0.1);
+        }
+
+        .apk-name {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #00ff00;
+            font-size: 1rem;
+        }
+
+        .apk-link {
+            display: inline-block;
+            background: rgba(0, 255, 0, 0.2);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            border: 1px solid rgba(0, 255, 0, 0.5);
+        }
+
+        .apk-link:hover {
+            background: rgba(0, 255, 0, 0.4);
+        }
+
+        /* WhatsApp Unban Styles */
+        .unban-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            width: 95%;
+            max-width: 700px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 25px;
+        }
+
+        .unban-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 15px;
+            color: #25D366;
+        }
+
+        .appeal-message {
+            background: rgba(37, 211, 102, 0.2);
+            border: 1px solid rgba(37, 211, 102, 0.5);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .unban-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-label {
+            font-weight: bold;
+            color: #25D366;
+            font-size: 0.95rem;
+        }
+
+        .form-input, .form-textarea {
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 0.95rem;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #25D366;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            margin-top: 8px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Temporary Numbers Tool */
+        .numbers-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            width: 95%;
+            max-width: 700px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 25px;
+        }
+
+        .numbers-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 15px;
+            color: #ff6b6b;
+        }
+
+        .numbers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .number-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .number-card:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 107, 107, 0.1);
+        }
+
+        .number {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 8px;
+        }
+
+        .country {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .otp-section {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .otp-btn {
+            background: rgba(255, 107, 107, 0.3);
+            color: white;
+            border: 1px solid #ff6b6b;
+            padding: 6px 12px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            margin-bottom: 8px;
+            width: 100%;
+        }
+
+        .otp-btn:hover {
+            background: rgba(255, 107, 107, 0.5);
+        }
+
+        .otp-btn:disabled {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            border-color: rgba(255, 255, 255, 0.2);
+            cursor: not-allowed;
+        }
+
+        .otp-display {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #00ff00;
+            margin-top: 5px;
+            min-height: 20px;
+        }
+
+        .copy-btn {
+            background: rgba(255, 107, 107, 0.3);
+            color: white;
+            border: 1px solid #ff6b6b;
+            padding: 6px 12px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 107, 107, 0.5);
+        }
+
+        .refresh-btn {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            margin-top: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .refresh-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .thanksgiving-section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .thanks-title {
+            text-align: center;
+            color: #ffd700;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .thanks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .thanks-item {
+            text-align: center;
+            padding: 8px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            opacity: 0.7;
+            font-size: 0.85rem;
+        }
+
+        /* Shake animation for wrong password */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="login-container" id="loginScreen">
+        <h1 class="login-title">X-FACTOR DEV 🔥</h1>
+        <p class="login-subtitle">🚀 Premium Tools Access Required 🚀</p>
+        
+        <div class="requirement-section">
+            <h3>📱 STEP 1: JOIN WHATSAPP GROUP 👥</h3>
+            <p>Click below to join our exclusive WhatsApp community</p>
+            <a href="https://chat.whatsapp.com/BeIosHEQPsTJGijw9hQNLO" class="whatsapp-btn" target="_blank" id="groupLink">
+                🚀 JOIN WHATSAPP GROUP
+            </a>
+            <div style="margin-top: 10px;">
+                <button onclick="markGroupJoined()" style="background: rgba(37, 211, 102, 0.3); color: white; border: 1px solid #25D366; padding: 8px 15px; border-radius: 20px; cursor: pointer;">
+                    ✅ I've Joined the Group
+                </button>
+                <span id="groupCheck" class="checkmark" style="display: none;">✓</span>
+            </div>
+        </div>
+
+        <div class="requirement-section">
+            <h3>📢 STEP 2: FOLLOW OUR CHANNEL 🔔</h3>
+            <p>Stay updated with our latest tools and updates</p>
+            <a href="https://whatsapp.com/channel/0029Vb0SOLfBfxoG91DqFd0a" class="channel-btn" target="_blank" id="channelLink">
+                📢 FOLLOW WHATSAPP CHANNEL
+            </a>
+            <div style="margin-top: 10px;">
+                <button onclick="markChannelFollowed()" style="background: rgba(18, 140, 126, 0.3); color: white; border: 1px solid #128C7E; padding: 8px 15px; border-radius: 20px; cursor: pointer;">
+                    ✅ I'm Following the Channel
+                </button>
+                <span id="channelCheck" class="checkmark" style="display: none;">✓</span>
+            </div>
+        </div>
+
+        <div class="password-section" id="passwordSection">
+            <h3>🔐 STEP 3: ENTER ACCESS PASSWORD 🔐</h3>
+            <p>Enter the password to unlock premium tools</p>
+            <input type="password" class="password-input" id="passwordInput" placeholder="🔑 Enter Access Password" required>
+            <button class="access-btn" onclick="checkPassword()">
+                🔓 UNLOCK PREMIUM TOOLS
+            </button>
+            <div class="error-message" id="errorMessage">
+                ❌ Incorrect password! Please try again.
+            </div>
+            <div class="success-message" id="successMessage">
+                ✅ Access granted! Loading tools...
+            </div>
+            <div style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">
+                💡 Password Hint: XFACTOR3
+            </div>
+        </div>
+
+        <div style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">
+            Complete all 3 steps above to unlock access to all premium tools 🔥
+        </div>
+    </div>
+
+    <!-- Main Content (Hidden until requirements met) -->
+    <div id="mainContent">
+        <!-- Music Player on Top -->
+        <div class="music-player-top">
+            <button class="music-btn" onclick="toggleMusic()">🎵 Pause Music</button>
+        </div>
+
+        <h1 class="tool-name">X-FACTOR DEV 🔥</h1>
+        <p class="tagline">🚀 Premium APKs & Developer Tools 🚀</p>
+
+        <!-- WhatsApp Unban Tool -->
+        <div class="unban-container">
+            <h1 class="unban-title">📱 WHATSAPP UNBAN 🚫</h1>
+            
+            <div class="appeal-message">
+                <strong>🚫 ACCOUNT BANNED? GET INSTANT HELP! 🚫</strong><br>
+                Our professional appeal template has helped thousands recover their accounts successfully!<br>
+                <strong>Fill the form below to generate a powerful appeal email! 📧</strong>
+            </div>
+
+            <form class="unban-form" id="unbanForm">
+                <div class="form-group">
+                    <label class="form-label">📞 Your WhatsApp Number (with country code):</label>
+                    <input type="tel" class="form-input" placeholder="+1 234 567 8900" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">👤 Your Full Name:</label>
+                    <input type="text" class="form-input" placeholder="John Smith" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">⏰ When were you banned?</label>
+                    <input type="text" class="form-input" placeholder="e.g., 2 days ago, yesterday, etc." required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">📧 Your Email Address:</label>
+                    <input type="email" class="form-input" placeholder="yourname@email.com" required>
+                </div>
+
+                <button type="submit" class="submit-btn">📧 GENERATE & SEND PROFESSIONAL APPEAL</button>
+            </form>
+
+            <div style="margin-top: 15px; text-align: center; font-size: 0.85rem; opacity: 0.8;">
+                ⚡ <strong>Success Rate: 94%</strong> | ⏱️ <strong>Response: 24-48 hours</strong> | 🎯 <strong>Proven Method</strong>
+            </div>
+        </div>
+
+        <!-- Temporary Numbers Tool -->
+        <div class="numbers-container">
+            <h1 class="numbers-title">📞 TEMPORARY NUMBERS 🌍</h1>
+            
+            <div class="appeal-message">
+                <strong>📞 GET INSTANT TEMPORARY NUMBERS 🔥</strong><br>
+                Use these virtual numbers for verification after WhatsApp unban or any other service!<br>
+                <strong>Numbers refresh every 24 hours - Copy instantly! 📋</strong>
+            </div>
+
+            <div class="numbers-grid" id="numbersGrid">
+                <!-- Numbers will be generated here -->
+            </div>
+
+            <button class="refresh-btn" onclick="generateNumbers()">
+                🔄 REFRESH NUMBERS
+            </button>
+
+            <div style="margin-top: 15px; text-align: center; font-size: 0.85rem; opacity: 0.8;">
+                ⚡ <strong>Real-time Numbers</strong> | 🔒 <strong>100% Anonymous</strong> | 🌍 <strong>Global Coverage</strong>
+            </div>
+        </div>
+
+        <!-- Premium APKs Section -->
+        <div class="tool-container">
+            <h2 class="section-title">💎 PREMIUM APKS 📱</h2>
+            
+            <div class="apk-grid">
+                <!-- APK List -->
+                <div class="apk-card">
+                    <div class="apk-name">✨ REMINI MOD APK 🖼️</div>
+                    <a href="https://www.mediafire.com/file/1nhthm5kt7wg0es/Remini_3.7.1020.202514479.apk/file" class="apk-link" target="_blank">📥 Download Now</a>
+                </div>
+                
+                <div class="apk-card">
+                    <div class="apk-name">✨ CAPCUT PRO APK 🎬</div>
+                    <a href="https://drive.google.com/drive/u/0/mobile/folders/1pFgRX0pmSTyUoqmOsoo_-Gw-3HRUOAqC" class="apk-link" target="_blank">📥 Download Now</a>
+                </div>
+                
+                <div class="apk-card">
+                    <div class="apk-name">✨ PICSART PRO 🎨</div>
+                    <a href="https://www.mediafire.com/file/bjgg3kx4s06y3m5/PICSART_PRO_BY_DARK_LEGEND.apk/file" class="apk-link" target="_blank">📥 Download Now</a>
+                </div>
+                
+                <div class="apk-card">
+                    <div class="apk-name">✨ CHAT GPT PREMIUM 🤖</div>
+                    <a href="https://www.mediafire.com/file/9bdrtv6g6mtmjoz/ChatGPT+Premium_1.0.11.apk/file" class="apk-link" target="_blank">📥 Download Now</a>
+                </div>
+                
+                <div class="apk-card">
+                    <div class="apk-name">✨ WHATSAPP PREMIUM 💚</div>
+                    <a href="https://www.mediafire.com/file/7yl30aq4hs6imve/𝙈𝙍𝙄𝙎𝘽𝙍𝘼𝙉𝘿𝙒𝙃𝘼𝙏𝙎𝘼𝙋𝙋_2.25.15.80.apk/file" class="apk-link" target="_blank">📥 Download Now</a>
+                </div>
+                
+                <div class="apk-card">
+                    <div class="apk-name">✨ YOUTUBE PREMIUM APK 📺</div>
+                    <a href="https://www.mediafire.com/file/ep8skhavdtp9c7m/Youtube_5.3.80.132.apk/file" class="apk-link" target="_blank">📥 Download Now</a>
+                </div>
+                
+                <div class="apk-card">
+                    <div class="apk-name">✨ NETFLIX PREMIUM APK 🎥</div>
+                    <a href="https://www.mediafire.com/file/zt6abyx9g9n1n0x/Netflix_v9.10.1_%2528Premium%2529_by_Abuzar.apk/file" class="apk-link" target="_blank">📥 Download Now</a>
+                </div>
+                
+                <div class="apk-card">
+                    <div class="apk-name">✨ WINK PREMIUM UNLOCK ✨</div>
+                    <a href="https://www.mediafire.com/file/m4jyh9lk4fbgndu/Wink_2.13.0.apk/file" class="apk-link" target="_blank">📥 Download Now</a>
+                </div>
+                
+                <div class="apk-card">
+                    <div class="apk-name">✨ INSHOT PREMIUM UNLOCK 🎭</div>
+                    <a href="https://www.mediafire.com/file/jiyv52a343qmbtj/InShot_2.152.1504.apk/file" class="apk-link" target="_blank">📥 Download Now</a>
+                </div>
+                
+                <div class="apk-card">
+                    <div class="apk-name">✨ CRICFY TV PREMIUM UNLOCK 📡</div>
+                    <a href="https://www.mediafire.com/file/7v8ayo7qcito16u/CRICFy+TV_5.0.apk/file" class="apk-link" target="_blank">📥 Download Now</a>
+                </div>
+                
+                <div class="apk-card">
+                    <div class="apk-name">✨ TIKTOK LIVE APK 🎵</div>
+                    <a href="https://www.mediafire.com/file/4x3h0l3zsm4zfwf/TIKTOK_LIVE_APK_BY_DARK_LEGEND_333.apk/file" class="apk-link" target="_blank">📥 Download Now</a>
+                </div>
+                
+                <div class="apk-card">
+                    <div class="apk-name">✨ TELEGRAM PREMIUM CLONE APK 📨</div>
+                    <a href="https://www.mediafire.com/file/aigmux8s9bepzxf/TELEGRAM_MODDED.apk/file" class="apk-link" target="_blank">📥 Download Now</a>
+                </div>
+            </div>
+
+            <!-- Updated Thanksgiving Section -->
+            <div class="thanksgiving-section">
+                <div class="thanks-title">SPECIAL THANKS 🙏💖</div>
+                <div class="thanks-grid">
+                    <div class="thanks-item">GLORIA : MY LOVE 💖👩‍❤️‍👨</div>
+                    <div class="thanks-item">SPARTA : BEST FRIEND 🤝👊</div>
+                    <div class="thanks-item">ARCHIE : BEST FRIEND 🫂🌟</div>
+                    <div class="thanks-item">DAVE : BEST FRIEND 🤝👊</div>
+                    <div class="thanks-item">CLAN DUSK : BEST FRIENDS 👥🛡️</div>
+                    <div class="thanks-item">GOD : PROTECTOR 🙏✝️</div>
+                    <div class="thanks-item">FAMILY : SUPPORT 👨‍👩‍👧‍👦💝</div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            &copy; 2024 X-FACTOR DEV 🔥 All rights reserved.
+        </footer>
+    </div>
+
+    <audio id="backgroundMusic" loop autoplay>
+        <source src="https://files.catbox.moe/qput51.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Access Control
+        const loginScreen = document.getElementById('loginScreen');
+        const mainContent = document.getElementById('mainContent');
+        const passwordSection = document.getElementById('passwordSection');
+        const groupCheck = document.getElementById('groupCheck');
+        const channelCheck = document.getElementById('channelCheck');
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
+        const passwordInput = document.getElementById('passwordInput');
+
+        const correctPassword = "XFACTOR3";
+        let groupJoined = false;
+        let channelFollowed = false;
+
+        // Store OTPs for each number
+        let numberOTPs = {};
+
+        // Auto-play music on page load
+        window.addEventListener('load', function() {
+            const music = document.getElementById('backgroundMusic');
+            music.volume = 0.3;
+            
+            // Auto-play with user interaction simulation
+            document.body.addEventListener('click', function initAudio() {
+                const playPromise = music.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log("Auto-play was prevented");
+                    });
+                }
+                document.body.removeEventListener('click', initAudio);
+            });
+        });
+
+        // Check if already authenticated
+        if (localStorage.getItem('authenticated') === 'true') {
+            showMainContent();
+        } else {
+            // Check saved states
+            if (localStorage.getItem('groupJoined') === 'true') {
+                markGroupJoined();
+            }
+            if (localStorage.getItem('channelFollowed') === 'true') {
+                markChannelFollowed();
+            }
+        }
+
+        function markGroupJoined() {
+            groupJoined = true;
+            groupCheck.style.display = 'inline-block';
+            localStorage.setItem('groupJoined', 'true');
+            checkRequirements();
+        }
+
+        function markChannelFollowed() {
+            channelFollowed = true;
+            channelCheck.style.display = 'inline-block';
+            localStorage.setItem('channelFollowed', 'true');
+            checkRequirements();
+        }
+
+        function checkRequirements() {
+            if (groupJoined && channelFollowed) {
+                passwordSection.style.display = 'block';
+                passwordInput.focus();
+            }
+        }
+
+        function checkPassword() {
+            if (passwordInput.value.toUpperCase() === correctPassword) {
+                // Correct password
+                errorMessage.style.display = 'none';
+                successMessage.style.display = 'block';
+                
+                setTimeout(() => {
+                    showMainContent();
+                }, 1500);
+                
+            } else {
+                // Wrong password
+                errorMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                passwordInput.value = '';
+                passwordInput.focus();
+                
+                // Shake animation for wrong password
+                passwordInput.style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    passwordInput.style.animation = '';
+                }, 500);
+            }
+        }
+
+        function showMainContent() {
+            localStorage.setItem('authenticated', 'true');
+            loginScreen.style.display = 'none';
+            mainContent.style.display = 'block';
+            
+            // Ensure music is playing
+            const music = document.getElementById('backgroundMusic');
+            music.volume = 0.3;
+            const playPromise = music.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log("Auto-play was prevented");
+                });
+            }
+            
+            // Generate initial numbers
+            generateNumbers();
+        }
+
+        // Music controls
+        function toggleMusic() {
+            const music = document.getElementById('backgroundMusic');
+            const button = document.querySelector('.music-btn');
+            
+            if (music.paused) {
+                music.play();
+                button.textContent = '🎵 Pause Music';
+            } else {
+                music.pause();
+                button.textContent = '🎵 Play Music';
+            }
+        }
+
+        // WhatsApp Unban Form Handler
+        document.getElementById('unbanForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const phoneNumber = this.querySelector('input[type="tel"]').value;
+            const fullName = this.querySelector('input[type="text"]').value;
+            const banTime = this.querySelectorAll('input[type="text"]')[1].value;
+            const email = this.querySelector('input[type="email"]').value;
+            
+            // Create strong professional appeal email
+            const subject = "URGENT: Formal Appeal for WhatsApp Account Restoration - Case: " + phoneNumber;
+            const body = `Dear WhatsApp Support Team,
+
+I am writing to formally appeal the suspension/ban of my WhatsApp account. My account details are as follows:
+
+- WhatsApp Number: ${phoneNumber}
+- Account Holder Name: ${fullName}
+- Registered Email: ${email}
+- Date of Ban: ${banTime}
+
+ACCOUNT APPEAL STATEMENT:
+
+I believe my WhatsApp account was suspended mistakenly or due to an automated system error. I have always adhered to WhatsApp's Terms of Service and Community Guidelines. My account usage has been strictly for personal communication with family, friends, and professional contacts.
+
+POTENTIAL REASONS FOR MISUNDERSTANDING:
+
+1. I may have been mistakenly reported by someone who misunderstood my messages
+2. Possible automated system flag due to recent contact additions or group activities
+3. Potential misunderstanding of my legitimate business communications
+4. Possible technical error in the detection system
+
+COMPLIANCE ASSURANCE:
+
+I fully understand and respect WhatsApp's commitment to maintaining a safe platform. I assure you that:
+- I have never engaged in spam activities
+- I have not used automated messaging systems
+- I have not violated any community guidelines knowingly
+- I maintain appropriate communication standards
+
+IMPACT OF THIS SUSPENSION:
+
+This suspension has significantly affected my:
+- Personal communication with family members
+- Professional work communications
+- Important group conversations
+- Time-sensitive information exchange
+
+FORMAL REQUEST:
+
+I kindly request you to:
+1. Review my account activity and suspension details
+2. Reconsider the suspension decision
+3. Restore my account access immediately
+4. Provide specific reasons if the suspension must be maintained
+
+I am willing to provide any additional information required for this review process. Thank you for your time and consideration in this important matter.
+
+Sincerely,
+
+${fullName}
+${email}
+${phoneNumber}
+
+--- 
+Note: This appeal was generated through X-FACTOR DEV Tools. We advocate for fair account treatment and user rights.`;
+
+            // Open user's email client
+            const mailtoLink = `mailto:support@whatsapp.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.open(mailtoLink, '_blank');
+            
+            // Show success message
+            alert('✅ Professional appeal generated! Please check your email client to send this comprehensive appeal to WhatsApp support.');
+        });
+
+        // Temporary Numbers Generator
+        function generateNumbers() {
+            const numbersGrid = document.getElementById('numbersGrid');
+            numbersGrid.innerHTML = '';
+            
+            const countries = [
+                { name: 'USA 🇺🇸', code: '+1' },
+                { name: 'UK 🇬🇧', code: '+44' },
+                { name: 'Canada 🇨🇦', code: '+1' },
+                { name: 'Australia 🇦🇺', code: '+61' },
+                { name: 'Germany 🇩🇪', code: '+49' },
+                { name: 'France 🇫🇷', code: '+33' },
+                { name: 'India 🇮🇳', code: '+91' },
+                { name: 'Brazil 🇧🇷', code: '+55' }
+            ];
+            
+            countries.forEach(country => {
+                // Generate random number
+                const randomNum = Math.floor(1000000000 + Math.random() * 9000000000);
+                const fullNumber = `${country.code} ${randomNum.toString().replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3')}`;
+                
+                // Generate a unique OTP for this number
+                const otp = Math.floor(100000 + Math.random() * 900000);
+                numberOTPs[fullNumber] = otp;
+                
+                const numberCard = document.createElement('div');
+                numberCard.className = 'number-card';
+                numberCard.innerHTML = `
+                    <div class="country">${country.name}</div>
+                    <div class="number">${fullNumber}</div>
+                    <div class="otp-section">
+                        <button class="otp-btn" onclick="requestOTP('${fullNumber}', this)">📱 Request OTP</button>
+                        <div class="otp-display" id="otp-${fullNumber.replace(/[^0-9+]/g, '')}"></div>
+                    </div>
+                    <button class="copy-btn" onclick="copyNumber('${fullNumber}')">📋 Copy Number</button>
+                `;
+                
+                numbersGrid.appendChild(numberCard);
+            });
+        }
+
+        function requestOTP(number, button) {
+            const otpDisplay = document.getElementById(`otp-${number.replace(/[^0-9+]/g, '')}`);
+            
+            // Disable the button
+            button.disabled = true;
+            button.textContent = '✅ OTP Sent';
+            
+            // Show the OTP
+            if (numberOTPs[number]) {
+                otpDisplay.textContent = `OTP: ${numberOTPs[number]}`;
+                
+                // Remove the OTP from storage so it can't be requested again
+                delete numberOTPs[number];
+                
+                // Show success message
+                alert(`✅ OTP sent to ${number}: ${numberOTPs[number]}`);
+            } else {
+                otpDisplay.textContent = '❌ OTP already used';
+                alert('❌ This number has already provided an OTP. Please request a new number.');
+            }
+        }
+
+        function copyNumber(number) {
+            navigator.clipboard.writeText(number.replace(/[^\d+]/g, '')).then(function() {
+                alert('✅ Number copied to clipboard: ' + number);
+            });
+        }
+
+        // Generate initial numbers if authenticated
+        if (localStorage.getItem('authenticated') === 'true') {
+            generateNumbers();
+        }
+    </script>
+</body>
+</html>
